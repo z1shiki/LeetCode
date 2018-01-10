@@ -35,19 +35,16 @@
  * @param {number} target
  * @return {number[]}
  */
-const twoSum = function(nums, target) {
+const twoSum = (nums, target) => {
     "use strict"
     let set = new Set()
     let output =[]
-    nums.every((item,index,array)=> {
+    nums.some((item,index,array)=> {
         if (set.has(item)) {
             output=[index,nums.indexOf(target - item)].sort()
-            return false
+            return ture
         }
         set.add(target - item)
-        return true
     });
     return output
 };
-
-twoSum([8,2,5,4,6],8)

@@ -38,36 +38,28 @@
  * @return {ListNode}
  */
 const addTwoNumbers = (l1, l2) => {
-    if (!l1 && !l2) return null
-
     let carrier = 0
-    let res = ''
-
-    while (l1 || l2) {
-        let v1
-        let v2
-        v1 = l1 ? l1.val : 0
-        v2 = l2 ? l2.val : 0
-        let sum = v1 + v2 + carrier
-        if (sum > 9) {
-            carrier = 1
-            sum = sum % 10
-        } else {
-            carrier = 0
+    let nextNode = new ListNode(0)
+    let head = nextNode
+    while (true) {
+        if (l1) {
+            nextNode.val += l1.val
+            l1 = l1.next
         }
-        res = sum + res
-        l1 = l1 ? l1.next : null
-        l2 = l2 ? l2.next : null
+        if (l2) {
+            nextNode.val += l2.val
+            l2 = l2.next
+        }
+        if (nextNode.val > 9) {
+            nextNode.val %= 10
+            carrier = 1
+        }
+        if (carrier === 0 && l1 === null && l2 === null) {
+            return head
+        }
+        nextNode.next = new ListNode(carrier)
+        nextNode = nextNode.next
+        carrier = 0
     }
-    if (carrier) res = '1' + res
-
-    let head = new ListNode(Number(res[res.length - 1]))
-    let result = head
-    let pos = res.length - 2
-    while (pos > -1) {
-        head.next = new ListNode(Number(res[pos]))
-        head = head.next
-        pos--
-    }
-    return result
+    return result.next
 };

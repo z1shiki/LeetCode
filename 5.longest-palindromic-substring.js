@@ -78,5 +78,3 @@ const longestPalindrome = (s) => {
     }
     return s.substr(minStart, maxLen)
 };
-
-longestPalindrome('aabccba')

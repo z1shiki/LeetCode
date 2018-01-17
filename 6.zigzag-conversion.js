@@ -70,8 +70,5 @@ const convert = (s, numRows) => {
     for(let i=0 ;i<left;i++){
         result += s[i*units+numRows]
     }
-    console.log(result)
     return result
 };
-
-convert("PAYPALISHIRING", 3)

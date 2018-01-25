@@ -42,5 +42,3 @@ const isValid = (s) => {
     }
     return true
 };
-
-console.log(isValid('[]{}[]'))

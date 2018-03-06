@@ -48,6 +48,11 @@
  * @param {number} target
  * @return {number}
  */
-var searchInsert = function(nums, target) {
-    
+const searchInsert = (nums, target) => {
+    let length = nums.length
+    if(length==0||target=='')return -1
+    for(let i =0;i<length;i++){
+        if(nums[i]>=target)return i
+    }
+    return -1
 };

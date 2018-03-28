@@ -41,6 +41,22 @@
  * @param {number} target
  * @return {number[][]}
  */
-var combinationSum = function(candidates, target) {
-    
+const combinationSum = (candidates, target) => {
+    let result = []
+    let length = candidates.length
+    const bfs = (temp, left, pos) => {
+        if (left < 0) return
+        if (left === 0) {
+            result.push(temp)
+            return
+        }
+
+
+        for (let i = pos; i < length; i++) {
+            bfs([...temp, candidates[i]], left - candidates[i], i)
+        }
+    }
+
+    bfs([],target,0)
+    return result
 };

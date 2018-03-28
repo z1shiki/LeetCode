@@ -22,6 +22,24 @@
  * @param {number[]} height
  * @return {number}
  */
-var maxArea = function(height) {
-    
+const maxArea = (height) => {
+    let left = 0
+    let right = height.length - 1
+    let result = 0
+    let high = 0
+
+    while (left < right) {
+        let width = right - left
+        if (height[left] > height[right]) {
+            high = height[right]
+            right--
+        } else {
+            high = height[left]
+            left++
+        }
+        if (result < high * width) {
+            result = high * width
+        }
+    }
+    return result
 };

@@ -38,6 +38,20 @@
  * @param {number[]} nums
  * @return {number}
  */
-var jump = function(nums) {
-    
+const jump = (nums) => {
+    const length = nums.length
+    let step = 0
+    let curReach = 0
+    let maxReach = 0
+    let i = 0
+    while (curReach - (i - 1) > 0) {
+        step++
+        while (i <= curReach) {
+            maxReach = Math.max(maxReach, nums[i] + i)
+            if (maxReach >= length - 1) return step
+            i++
+        }
+        curReach = maxReach
+    }
+    return 0
 };

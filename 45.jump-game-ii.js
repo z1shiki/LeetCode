@@ -40,6 +40,7 @@
  */
 const jump = (nums) => {
     const length = nums.length
+    if (length < 2) return 0
     let step = 0
     let curReach = 0
     let maxReach = 0

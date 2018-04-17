@@ -32,6 +32,23 @@
  * @param {number[]} nums
  * @return {number[][]}
  */
-var permute = function(nums) {
-    
+const permute = (nums) => {
+    let res = []
+    let length = nums.length
+    const backtrack =(temp,visited)=>{
+        if(visited.every(e=>e===1)){
+            res.push(temp)
+            return
+        }
+        for(let i=0;i<length;i++){
+            if(visited[i]===1)continue
+            let item = nums[i]
+
+            visited[i]=1
+            backtrack([...temp,item],visited)
+            visited[i]=undefined
+        }
+    }
+    backtrack([],Array(length).fill(0))
+    return res
 };

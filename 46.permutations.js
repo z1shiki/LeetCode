@@ -40,6 +40,7 @@ const permute = (nums) => {
             res.push(temp)
             return
         }
+        //visited 
         for(let i=0;i<length;i++){
             if(visited[i]===1)continue
             let item = nums[i]

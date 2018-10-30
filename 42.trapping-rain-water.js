@@ -56,22 +56,21 @@ const trap1=(height)=>{
     let i= 0
     let res = 0
     let length = height.length
-    while(i<length){
-        if(stack.isEmpty()||height[i]<=height[stack.peek]){
+    while(i < length){
+        if(stack.isEmpty() || height[i] <= height[stack.peek()]){
             stack.push(i++)
         }else{
-            let t = stack.peek()
-            stack.pop()
-            res += (Math.min(height[i],height[stack.pop()])-height[t])*(i-stack.peek()-1)
+            let t = stack.pop()
+            if(stack.isEmpty()) continue
+            res += (Math.min(height[i], height[stack.peek()]) - height[t]) * (i - stack.peek() - 1)
         }
     }
+    return res
 }
 
 {
     (function () {
         let height = [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]
         console.log(trap1(height))
-        let stack = new Stack()
-        console.log(stack.__proto__)
     })()
 }

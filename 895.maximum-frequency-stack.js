@@ -100,8 +100,6 @@ function FreqStack(){
     if(Freq[result] == 0){
       delete(Freq[result])
     }
-    console.log(Freq)
-    console.log(result)
     return result
   }
 }

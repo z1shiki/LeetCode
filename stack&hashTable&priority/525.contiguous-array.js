@@ -42,35 +42,35 @@
  * @return {number}
  */
 const findMaxLength = nums => {
-    const length = nums.length
-    if (length == 0) return 0
-    let hash = {}
-    let sum = 0
-    let result = 0
-    for (let i = 0; i < length; ++i) {
-        sum += nums[i] ? 1 : -1
-        if (sum == 0) {
-            result = i + 1
-        } else if (sum in hash) {
-            result = Math.max(result, i - hash[sum])
-        } else hash[sum] = i
-    }
-    return result
+  const { length } = nums
+  if (length === 0) return 0
+  const hash = {}
+  let sum = 0
+  let result = 0
+  for (let i = 0; i < length; ++i) {
+    sum += nums[i] ? 1 : -1
+    if (sum === 0) {
+      result = i + 1
+    } else if (sum in hash) {
+      result = Math.max(result, i - hash[sum])
+    } else hash[sum] = i
+  }
+  return result
 }
 
 const findMaxLength2 = nums => {
-    const length = nums.length
-    if (length == 0) return 0
-    let array = Array(2 * length + 1).fill(-1)
-    let sum = 0
-    let result = 0
-    for (let i = 0; i < length; ++i) {
-        sum += nums[i] ? 1 : -1
-        if (sum == 0) {
-            result = i + 1
-        } else if (array[sum + length] != -1) {
-            result = Math.max(result, i - array[sum + length])
-        } else array[sum + length] = i
-    }
-    return result
+  const { length } = nums
+  if (length === 0) return 0
+  const array = Array(2 * length + 1).fill(-1)
+  let sum = 0
+  let result = 0
+  for (let i = 0; i < length; ++i) {
+    sum += nums[i] ? 1 : -1
+    if (sum === 0) {
+      result = i + 1
+    } else if (array[sum + length] !== -1) {
+      result = Math.max(result, i - array[sum + length])
+    } else array[sum + length] = i
+  }
+  return result
 }

@@ -1,0 +1,16 @@
+{
+  "name": "leetcode",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:z1shiki/LeetCode.git",
+  "author": "z1shiki <z1stage@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^5.15.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.16.0"
+  },
+  "dependencies": {
+    "eslint-plugin-prettier": "^3.0.1"
+  }
+}

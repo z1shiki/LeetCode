@@ -48,7 +48,7 @@
 function MontonicQueue() {
   let queue = []
   this.push = e => {
-    if (queue.length == 0) {
+    if (queue.length === 0) {
       queue.push(e)
     } else if (e > queue[0]) queue = [e]
     else {
@@ -67,18 +67,16 @@ function MontonicQueue() {
     }
     queue.splice(0, point)
   }
-  this.max = () => {
-    return queue[0]
-  }
+  this.max = () => queue[0]
 }
 const maxSlidingWindow = (nums, k) => {
-  let ans = []
-  let q = new MontonicQueue()
+  const ans = []
+  const q = new MontonicQueue()
   for (let i = 0; i < nums.length; ++i) {
     q.push(nums[i])
     if (i - k + 1 >= 0) {
       ans.push(q.max())
-      if (nums[i - k + 1] == q.max()) {
+      if (nums[i - k + 1] === q.max()) {
         q.pop()
       }
     }

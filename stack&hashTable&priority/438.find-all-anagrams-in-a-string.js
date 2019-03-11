@@ -54,36 +54,36 @@
  * @param {string} p
  * @return {number[]}
  */
-const findAnagrams = (s, p) => {
-    const l1 = s.length
-    const l2 = p.length
-    let c1 = Array(26).fill(0)
-    let c2 = Array(26).fill(0)
-    let result = []
-
-    for (char of p) {
-        c2[char.charCodeAt(0) - 97]++
-    }
-    for (let j = 0; j < l1; ++j) {
-        if (j >= l2) {
-            --c1[s[j - l2].charCodeAt(0) - 97]
-        }
-        ++c1[s[j].charCodeAt(0) - 97]
-        if (equalAr(c1, c2)) {
-            result.push(j - l2 + 1)
-        }
-    }
-    return result
-}
 const equalAr = (a, b) => {
-    // if (a.length !== b.length) {
-    //     return false
-    // } else {
-    for (let i = 0; i < a.length; i++) {
-        if (a[i] !== b[i]) {
-            return false
-        }
+  // if (a.length !== b.length) {
+  //     return false
+  // } else {
+  for (let i = 0; i < a.length; i++) {
+    if (a[i] !== b[i]) {
+      return false
     }
-    return true
-    // }
+  }
+  return true
+  // }
+}
+const findAnagrams = (s, p) => {
+  const l1 = s.length
+  const l2 = p.length
+  const c1 = Array(26).fill(0)
+  const c2 = Array(26).fill(0)
+  const result = []
+
+  for (const char of p) {
+    c2[char.charCodeAt(0) - 97]++
+  }
+  for (let j = 0; j < l1; ++j) {
+    if (j >= l2) {
+      --c1[s[j - l2].charCodeAt(0) - 97]
+    }
+    ++c1[s[j].charCodeAt(0) - 97]
+    if (equalAr(c1, c2)) {
+      result.push(j - l2 + 1)
+    }
+  }
+  return result
 }

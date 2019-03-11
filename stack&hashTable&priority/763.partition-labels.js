@@ -40,7 +40,7 @@
  */
 
 const partitionLabels = S => {
-  const hash = Array(26).fill(0)
+  const hash = Array(26)
   for (let i = 0; i < 26; i++) {
     hash[i] = []
   }

@@ -98,6 +98,5 @@ const shortestCompletingWord = (licensePlate, words) => {
     min = word.length
     ans = word
   }
-  if(!ans.length) return false
   return ans
 }

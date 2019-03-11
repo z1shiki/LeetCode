@@ -92,14 +92,14 @@
  */
 const minRefuelStopsDP = (target, startFuel, stations) => {
   const n = stations.length
-  let dp = [startFuel].concat(Array(n).fill(0))
+  const dp = [startFuel].concat(Array(n).fill(0))
   for (let i = 0; i < n; i++) {
     for (let j = i + 1; j >= 1; j--) {
       if (dp[j - 1] >= stations[i][0]) {
         dp[j] = Math.max(dp[j], dp[j - 1] + stations[i][1])
       }
     }
-  }  
+  }
   for (let i = 0; i < dp.length; i++) {
     if (dp[i] >= target) return i
   }
@@ -112,7 +112,7 @@ const minRefuelStops = (target, startFuel, stations) => {
   let fuel = startFuel
   const n = stations.length
 
-  let q = new priorityQueue()
+  const q = new priorityQueue()
   while (true) {
     if (fuel >= target) return stops
     while (i < n && fuel >= stations[i][0]) {
@@ -126,7 +126,7 @@ const minRefuelStops = (target, startFuel, stations) => {
   return -1
 }
 function priorityQueue() {
-  let queue = []
+  const queue = []
   this.push = element => {
     if (queue.length == 0) {
       queue.push(element)
@@ -137,15 +137,11 @@ function priorityQueue() {
         queue.splice(i + 1, 0, element)
         break
       }
-      if(i==0) queue.splice(0,0,element)
+      if (i == 0) queue.splice(0, 0, element)
     }
   }
-  this.empty = () => {
-    return queue.length == 0
-  }
-  this.pop = () => {
-    return queue.pop()
-  }
+  this.empty = () => queue.length === 0
+  this.pop = () => queue.pop()
   this.show = () => {
     console.log(queue)
   }

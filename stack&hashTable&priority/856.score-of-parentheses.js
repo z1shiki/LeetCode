@@ -72,32 +72,29 @@
  * @param {string} S
  * @return {number}
  */
-const scoreOfParentheses = S => {
-    return score(S, 0, S.length - 1)
-}
+const scoreOfParentheses = S => score(S, 0, S.length - 1)
 const score = (S, left, right) => {
-    if (right - left == 1) return 1
-    let balanced = 0
-    for (let i = left; i < right; ++i) {
-        if (S[i] == '(') ++balanced
-        if (S[i] == ')') --balanced
-        if (balanced == 0) {
-            return score(S, left, i) + score(S, i + 1, right)
-        }
+  if (right - left === 1) return 1
+  let balanced = 0
+  for (let i = left; i < right; ++i) {
+    if (S[i] === '(') ++balanced
+    if (S[i] === ')') --balanced
+    if (balanced === 0) {
+      return score(S, left, i) + score(S, i + 1, right)
     }
-    return 2 * score(S, left + 1, right - 1)
+  }
+  return 2 * score(S, left + 1, right - 1)
 }
 
 const scoreOfParenthesesC = S => {
-    let count = -1
-    let length = S.length
-    let result = 0
-    for (let i = 0; i < length; ++i) {
-        count += S[i] == '(' ? 1 : -1
-        if (S[i] == '(' && S[i + 1] == ')') {
-            result += Math.pow(2, count)
-        }
+  let count = -1
+  const { length } = S
+  let result = 0
+  for (let i = 0; i < length; ++i) {
+    count += S[i] === '(' ? 1 : -1
+    if (S[i] == '(' && S[i + 1] === ')') {
+      result += 2 ** count
     }
-    return result
+  }
+  return result
 }
-

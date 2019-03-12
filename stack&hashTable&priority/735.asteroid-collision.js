@@ -109,17 +109,9 @@ const asteroidCollision = asteroids => {
       stack.push(item)
     } else if (stack.empty() || stack.peek() < 0) {
       stack.push(item)
-    } else {
-      let x = -1
-      while (!stack.empty() && stack.peek() > 0 && x < 0) {
-        x = stack.pop()
-        if (x + item === 0) {
-          x = 0
-          break
-        }
-        x = x + item > 0 ? x : item
-      }
-      if (x !== 0) stack.push(x)
+    } else if (stack.peek() + item <= 0) {
+      const boom = stack.pop()
+      if (boom + item < 0) --i
     }
   }
   return stack.toArray()

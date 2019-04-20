@@ -8,6 +8,7 @@
     "no-conosle": [0],
     "semi": ["error", "never"],
     "arrow-parens": ["error", "as-needed"],
-    "no-continue":"warn"
+    "no-continue":"warn",
+    "no-unused-expressions":["error",{ "allowShortCircuit": true }]
   }
 }

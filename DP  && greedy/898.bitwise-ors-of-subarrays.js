@@ -1,3 +1,5 @@
+/* eslint-disable no-bitwise */
+
 /*
  * @lc app=leetcode id=898 lang=javascript
  *
@@ -71,4 +73,23 @@
  * @param {number[]} A
  * @return {number}
  */
-const subarrayBitwiseORs = A => {}
+const subarrayBitwiseORs = A => {
+  const { length } = A
+  const ans = new Set()
+  let cur = new Set()
+  const nxt = new Set()
+  for (let i = 0; i < length; ++i) {
+    const a = A[i]
+    nxt.clear()
+    nxt.add(a)
+    for (const j of cur) {
+      nxt.add(j | a)
+    }
+    for (const k of nxt) {
+      ans.add(k)
+      cur.add(k)
+    }
+  }
+  return ans.size
+}
+// wrong
